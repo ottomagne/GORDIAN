@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3nmbh2mov7yo"]
+[gd_scene load_steps=5 format=3 uid="uid://b3nmbh2mov7yo"]
+
+[ext_resource type="Script" path="res://PlayerController.gd" id="1_iomd8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wooe2"]
 size = Vector2(10, 10)
@@ -6,6 +8,8 @@ orientation = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o3y65"]
 size = Vector3(10, 0.5, 10)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nf7ns"]
 
 [node name="Main" type="Node3D"]
 
@@ -17,3 +21,13 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_o3y65")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11664, 0)
+script = ExtResource("1_iomd8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_nf7ns")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48268, 0)
