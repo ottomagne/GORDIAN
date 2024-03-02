@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3nmbh2mov7yo"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wooe2"]
+size = Vector2(10, 10)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3y65"]
+size = Vector3(10, 0.5, 10)
+
+[node name="Main" type="Node3D"]
+
+[node name="Floor" type="Area3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("QuadMesh_wooe2")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_o3y65")
